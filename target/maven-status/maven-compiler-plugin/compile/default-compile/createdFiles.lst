@@ -1,0 +1,9 @@
+com\citec\forum\controller\IndexController.class
+com\citec\forum\config\WebConfig.class
+com\citec\model\ProductRepositoryImpl.class
+com\citec\forum\config\DbConfig.class
+com\citec\service\ProductService.class
+com\citec\forum\config\WebAppInitializer.class
+com\citec\forum\controller\ProductController.class
+com\citec\model\Product.class
+com\citec\model\ProductRepository.class

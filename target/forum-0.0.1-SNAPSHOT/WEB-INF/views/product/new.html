@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>New</title>
+</head>
+<body>
+	<form th:action="@{/product/edit}"  method="post">
+	
+	<div>
+		<label>name</label>
+		<input type="text" name="name"/>
+	</div>
+	<div>
+		<label>type</label>
+		<input type="text" name="type"/>
+	</div>
+	<div>
+		<label>price</label>
+		<input type="text" name="price"/>
+	</div>
+	<div>
+		<button>MENTÉS</button>
+	</div>	
+	</form>
+<h3 th:if="${err}">Hibás adatbevitel! </h3>
+</body>
+</html>

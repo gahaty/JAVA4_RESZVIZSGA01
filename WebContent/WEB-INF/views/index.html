@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" type="text/css" href="./static/main.css" />
+</head>
+<body>
+	<h1>Web forum</h1>
+	<div class="form-wrapper">
+		<table>
+			<tbody>
+				<tr th:each="f : ${topics}">
+					<td><a th:href="@{'/post?topicId=' + ${f.id}}"
+						th:text="${f.name}"></a></td>
+					<td th:text=${f.userName}></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>
