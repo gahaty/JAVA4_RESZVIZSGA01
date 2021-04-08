@@ -5,13 +5,15 @@ public class Topic {
 	private Integer id;
 	private String name;
 	private String userName;
+	private String topicName;
 	
 	public Topic() {}
-	
-	public Topic(Integer id, String name, String userName) {
+
+	public Topic(Integer id, String name, String userName, String topicName) {
 		this.id = id;
 		this.name = name;
 		this.userName = userName;
+		this.topicName = topicName;
 	}
 
 	public Integer getId() {
@@ -37,4 +39,14 @@ public class Topic {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
+	public String getTopicName() {
+		return topicName;
+	}
+
+	public void setTopicName(String topicName) {
+		this.topicName = topicName;
+	}
+	
+	
 }

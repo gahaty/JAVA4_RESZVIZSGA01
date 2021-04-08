@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" type="text/css" href="../static/main.css" />
+</head>
+<body>
+
+	<h1 th:each="t : ${topic}" th:text=${t.topicName}>Web forum</h1>
+	<div class="form-wrapper">
+		<table>
+			<tbody>
+				<tr th:each="p : ${posts}">
+					<td><a th:href="@{/comment/} + ${p.id}" th:text="${p.title}"></a></td>
+					<td th:text="${p.userName}"></td>
+					<td th:text="${p.dateTime}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

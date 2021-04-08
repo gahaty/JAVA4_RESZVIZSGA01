@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" type="text/css" href="../static/main.css" />
+</head>
+<body>
+	<h1 th:each="ps : ${postEntity}" th:text=${ps.title}> Web forum
+	</h1>
+	<br>
+	<div class="form-wrapper">
+		<table>
+			<tbody>
+				<tr th:each="ps : ${postEntity}">
+					<td th:text="${ps.post}"></td>
+					<td th:text="${ps.userName}"></td>
+					<td th:text="${ps.dateTime}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr/>
+	<div class="form-wrapper">
+		<table>
+			<tbody>
+				<tr th:each="c : ${comments}">
+					<td th:text="${c.comment}"></td>
+					<td th:text="${c.userName}"></td>
+					<td th:text="${c.dateTime}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

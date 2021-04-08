@@ -7,12 +7,12 @@
 </head>
 <body>
 	<h1>Web forum</h1>
+	<!--a th:href="@{/product/}">Products</a>-->
 	<div class="form-wrapper">
 		<table>
 			<tbody>
 				<tr th:each="f : ${topics}">
-					<td><a th:href="@{'/post?topicId=' + ${f.id}}"
-						th:text="${f.name}"></a></td>
+					<td><a th:href="@{/post/} + ${f.id}" th:text="${f.name}"></a></td>
 					<td th:text=${f.userName}></td>
 				</tr>
 			</tbody>
