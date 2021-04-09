@@ -6,31 +6,52 @@
 <link rel="stylesheet" type="text/css" href="../static/main.css" />
 </head>
 <body>
-	<h1 th:each="ps : ${postEntity}" th:text=${ps.title}> Web forum
-	</h1>
+	<h1 th:each="ps : ${postEntity}" th:text=${ps.title}>Web forum</h1>
 	<br>
 	<div class="form-wrapper">
-		<table>
+		<table th:each="ps : ${postEntity}">
 			<tbody>
-				<tr th:each="ps : ${postEntity}">
-					<td th:text="${ps.post}"></td>
+				<tr>
 					<td th:text="${ps.userName}"></td>
+				</tr>
+			</tbody>
+			<tbody>
+				<tr>
+					<td th:text="${ps.post}"></td>
+				<tr>
+			</tbody>
+			<tbody>
+				<tr>
 					<td th:text="${ps.dateTime}"></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<hr/>
+	<hr />
 	<div class="form-wrapper">
 		<table>
-			<tbody>
-				<tr th:each="c : ${comments}">
-					<td th:text="${c.comment}"></td>
+			<tbody th:each="c : ${comments}">
+				<tr>
 					<td th:text="${c.userName}"></td>
+				</tr>
+				<tr>
+					<td th:text="${c.comment}"></td>
+				</tr>
+				<tr>
 					<td th:text="${c.dateTime}"></td>
+				</tr>
+				<tr>
+					<td><br></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<hr />
+	<form th:action="@{/new/__${postEntity.get(0).id}__}" th:object="${postEntity}" method="post">
+		felhasználó név: <input type="text" name="userName" required="required">
+		<input type="submit" value="hozzászólás elküldése"> <br>
+		<textarea rows="4" cols="50" name="comment" required>Ez itt a komment helye...</textarea>
+		<br>
+	</form>
 </body>
 </html>

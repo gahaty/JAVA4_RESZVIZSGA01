@@ -37,4 +37,24 @@ public class ForumService {
 	public List<Post> findAnEntity(Integer id) {
 		return forumRepository.findAnEntity(id);
 	}
+	
+	public void insertNewUser(String userName) {
+		forumRepository.insertNewUser(userName);
+	}
+	
+	public Integer findUserById(String userName) {
+		return forumRepository.findUserById(userName);
+	}
+	
+	public Integer getUserId(String userName) {
+		return forumRepository.getUserId(userName);
+	}
+	
+	public void newComment(Comment c, Integer id) {
+		forumRepository.newComment(c, id);
+	}
+	
+	
+	
+	
 }

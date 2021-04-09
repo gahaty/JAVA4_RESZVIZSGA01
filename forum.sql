@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Ápr 08. 12:22
+-- Létrehozás ideje: 2021. Ápr 09. 15:04
 -- Kiszolgáló verziója: 10.4.14-MariaDB
 -- PHP verzió: 7.4.11
 
@@ -45,7 +45,12 @@ INSERT INTO `comment` (`id`, `user_name_id`, `comment`, `datetime`, `post_id`) V
 (3, 2, 'Egyáltalán , hallott már valaki ilyesmiről?', '2021-04-07 10:58:57', 2),
 (4, 5, '5 évnél idősebb tőkékkel nehezen tudom elképzelni a kivitelezést:\r\n- technikailag (konkrét leirás nélkül) nem tudom elképzelni az \"oda bele 1-2 vesszőt\" (nem fognak megeredni a vesszők)\r\n- idősebb tőkék hajlamosak hasadni\r\n(szerintem) inkább a \'zöldoltást\' próbáld meg (vagy újratelepítés)!', '2021-04-07 11:05:41', 2),
 (5, 4, 'Én szeretem Ákos zenéjét. Szerintem naggggyon jó!\r\nÉppen most csinálok egy válogatást magamnak a kedvenc számokból. Ha meg van, akkor leírom ide a címeket.', '2021-04-08 09:55:51', 3),
-(6, 5, 'A Depeche Mode topicban már sokat foglalkoztunk Ákossal és a BB-vel, de azért jó, hogy megnyitottad ezt a topicot.\r\nA kedvenc albumom tőle az Ikon. A Karcolatok sajnos nagyon nem tetszik. A Test albumról a kedvenc számom a Csak Te vagy. Megpróbálok összeállítani egy Ákos top-ot, a sorrend nem a tetszés erőőségét fejezi ki.\r\n\r\n1. Csak te vagy\r\n2. Ismerj fel\r\n3. Test\r\n4. Szabadíts fel\r\n5. Örvény\r\n6. Beavatás\r\n7. Minden egyszerű dalban\r\n8. Get down\r\n9. Hello\r\n10. Ikon', '2021-04-08 09:56:45', 3);
+(6, 5, 'A Depeche Mode topicban már sokat foglalkoztunk Ákossal és a BB-vel, de azért jó, hogy megnyitottad ezt a topicot.\r\nA kedvenc albumom tőle az Ikon. A Karcolatok sajnos nagyon nem tetszik. A Test albumról a kedvenc számom a Csak Te vagy. Megpróbálok összeállítani egy Ákos top-ot, a sorrend nem a tetszés erőőségét fejezi ki.\r\n\r\n1. Csak te vagy\r\n2. Ismerj fel\r\n3. Test\r\n4. Szabadíts fel\r\n5. Örvény\r\n6. Beavatás\r\n7. Minden egyszerű dalban\r\n8. Get down\r\n9. Hello\r\n10. Ikon', '2021-04-08 09:56:45', 3),
+(7, 8, 'Ez itt a komment helye...', '2021-04-09 12:12:34', 1),
+(8, 10, 'kb. 10-15 fokot érje el a talaj hőmérséklete!', '2021-04-09 12:14:18', 1),
+(9, 6, 'lilla nevű hozzászólónak igaza van!', '2021-04-09 12:18:29', 2),
+(10, 11, 'Halihó!!!\r\nMit is irhatnék kicsinyke országunk egyik legnagyszerübb, és legszinvonalasabb eloadójáról, Ákosról!!?!\r\nAkárcsak kedves bátyuskám(Mark), én is nagyon örülök eme topicnak, remélem nagyobb jovoje lesz, mint az enyémnek. :-)', '2021-04-09 12:27:20', 3),
+(11, 12, 'Vizilabdán nagyon megégtünk!!!!!!\r\nRemélem a Népligetben nyerünk!\r\nZúgjon a Hajrá FRADI!!!!', '2021-04-09 12:54:16', 4);
 
 -- --------------------------------------------------------
 
@@ -69,7 +74,8 @@ CREATE TABLE `post` (
 INSERT INTO `post` (`id`, `user_name_id`, `title`, `post`, `datetime`, `topic_id`) VALUES
 (1, 1, 'Kukorica vetése', 'Mikor van a vetés megfelelő ideje?\r\nElkezdhetem vetni most, vagy várjak még vele pár hetet?', '2021-04-06 11:49:00', 1),
 (2, 4, 'Szőlő oltás', 'Szőlő termesztésben jártas személy segítségét kérném.\r\nVan egy kis szőlőm ( 2-3 hektónyi ) , amiben kb 20 olyan tő van ,amely igen életerős , bőventermő , csak éppen október végére is csak 13-14 must fokra érik be.No , ezeket szeretném leváltani. Valahol olvastam , hogy lehetséges gyökérnyakba átoltani.Próbálta ezt már valaki?\r\nMásik kérdésem igaz-e ,hogy a Bianca fajtát egyszerüen lelehet dugni mert a filoxéra sem bántja?(A szokásos betegségek ellen tényleg elég immunis , volt olyan év , hogy minden más fajtát elvitt a peronoszpóra!)A szőlőm Érd környékén van.\r\nElőre is köszönöm a segítséget!', '2021-04-07 10:53:43', 1),
-(3, 3, 'Ákos', 'Szia mindenki, aki szereti vagy nem szereti Ákost, de inkább az előbbi. :) Én például nagyon szeretem amit csinál. A koncertjei nagyszerűek.\r\nKinek mi a kedvence tőle?\r\nAki meg nem szereti, az miért nem (ha egyáltalán meg tudja fogalmazni értelmesen)?', '2021-04-08 09:50:29', 2);
+(3, 3, 'Ákos', 'Szia mindenki, aki szereti vagy nem szereti Ákost, de inkább az előbbi. :) Én például nagyon szeretem amit csinál. A koncertjei nagyszerűek.\r\nKinek mi a kedvence tőle?\r\nAki meg nem szereti, az miért nem (ha egyáltalán meg tudja fogalmazni értelmesen)?', '2021-04-08 09:50:29', 2),
+(4, 8, 'Hajrá Fradi', 'Én nyitom ez első igazi topicot!!!!!\r\nHajrá Fradi!!!\r\n\r\nHajrá Zöldek!!!!!', '2021-04-09 12:36:05', 3);
 
 -- --------------------------------------------------------
 
@@ -114,7 +120,14 @@ INSERT INTO `user` (`id`, `user_name`) VALUES
 (2, 'misi'),
 (3, 'benő'),
 (4, 'elza'),
-(5, 'lilla');
+(5, 'lilla'),
+(6, 'pitypang'),
+(7, 'dexter'),
+(8, 'sakál'),
+(9, 'hello'),
+(10, 'pali'),
+(11, 'mesélő'),
+(12, 'bravúr');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -157,13 +170,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT a táblához `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT a táblához `topic`
@@ -175,7 +188,7 @@ ALTER TABLE `topic`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Megkötések a kiírt táblákhoz
