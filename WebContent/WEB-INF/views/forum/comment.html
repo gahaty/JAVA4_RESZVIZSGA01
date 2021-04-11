@@ -5,6 +5,16 @@
 <title>Index</title>
 <link rel="stylesheet" type="text/css" href="../static/main.css" />
 </head>
+
+<form th:action="@{/comment/new/__${postEntity.get(0).id}__}"
+		th:object="${postEntity}" method="post">
+	<input type="text" name="name" ><br>
+	<input type="submit" value="keresés komment alapján" required="required">
+
+</form>
+<br>
+<hr />
+<br>
 <body>
 	<h1 th:each="ps : ${postEntity}" th:text=${ps.title}>Web forum</h1>
 	<br>
@@ -12,7 +22,7 @@
 		<table th:each="ps : ${postEntity}">
 			<tbody>
 				<tr>
-					<td th:text="${ps.userName}"></td>
+					<td th:text="'létrehozta: ' + ${ps.userName}"></td>
 				</tr>
 			</tbody>
 			<tbody>
@@ -30,9 +40,13 @@
 	<hr />
 	<div class="form-wrapper">
 		<table>
+			<tr th:if="${comments.empty}">
+				<td>Ehhez a poszthoz még nem érkezett hozzászólás! Légy te az
+					első kommentelő!</td>
+			</tr>
 			<tbody th:each="c : ${comments}">
 				<tr>
-					<td th:text="${c.userName}"></td>
+					<td th:text="'kommentelő: ' + ${c.userName}"></td>
 				</tr>
 				<tr>
 					<td th:text="${c.comment}"></td>
@@ -46,10 +60,14 @@
 			</tbody>
 		</table>
 	</div>
+	<br>
 	<hr />
-	<form th:action="@{/new/__${postEntity.get(0).id}__}" th:object="${postEntity}" method="post">
-		felhasználó név: <input type="text" name="userName" required="required">
-		<input type="submit" value="hozzászólás elküldése"> <br>
+	<br>
+	<form th:action="@{/comment/new/__${postEntity.get(0).id}__}"
+		th:object="${postEntity}" method="post">
+		Felhasználó név: <input type="text" name="userName"
+			required="required"> <input type="submit"
+			value="hozzászólás elküldése"> <br>
 		<textarea rows="4" cols="50" name="comment" required>Ez itt a komment helye...</textarea>
 		<br>
 	</form>

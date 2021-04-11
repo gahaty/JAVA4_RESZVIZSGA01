@@ -10,14 +10,28 @@
 	<!--a th:href="@{/product/}">Products</a>-->
 	<div class="form-wrapper">
 		<table>
+			<thead>
+				<tr>
+					<th>témakör</th>
+					<th>beküldő</th>
+				</tr>
+			</thead>
 			<tbody>
-				<tr th:each="f : ${topics}">
-					<td><a th:href="@{/post/} + ${f.id}" th:text="${f.name}"></a></td>
-					<td th:text=${f.userName}></td>
+				<tr th:each="t : ${topic}">
+					<td><a th:href="@{/post/} + ${t.id}" th:text="${t.name}"></a></td>
+					<td th:text=${t.userName}></td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<br>
+	<hr />
+	<br>
+	<form th:action="@{/new}" method="post">
+		Felhasználó név: <input type="text" name="userName" required="required"><br>
+		Témakör címe: <input type="text" name="name" required="required"><br>
+		<input type="submit" value="témakör elküldése" required="required">
 
+	</form>
 </body>
 </html>
