@@ -5,51 +5,56 @@
 <title>Poszt</title>
 <link rel="stylesheet" type="text/css" href="../static/main.css" />
 </head>
-<a th:href="@{/}">Fő oldal</a>
-<h1 th:each="t : ${topic}" th:text=${t.topicName}>Web forum</h1>
-<hr>
-<br>
-<form th:action="@{/post/} + ${topicId}" method="post">
-	<input type="text" name="post" placeholder="poszt cím / beküldő"> <input type="submit"
-		value="keresés" required="required"> <a
-		th:href="@{/post/} + ${topicId}">Keresés törlés</a>
-</form>
-<br>
-<hr />
-<br>
+
 <body>
-	<div class="form-wrapper">
-		<table>
-			<thead>
-				<tr>
-					<th>poszt cím</th>
-					<th>beküldő</th>
-					<th>ekkor</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:if="${posts.empty}">
-					<td>Nincs megjeleníthető adat</td>
-				</tr>
-				<tr th:each="p : ${posts}">
-					<td><a th:href="@{/comment/} + ${p.id}" th:text="${p.title}"></a></td>
-					<td th:text="${p.userName}"></td>
-					<td th:text="${p.dateTime}"></td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="wrapper">
+		<main>
+			<a th:href="@{/}">Fő oldal</a>
+			<h1 th:each="t : ${topic}" th:text="'Témakör: ' + ${t.topicName}">Web forum</h1>
+			<hr>
+			<br>
+			<form th:action="@{/post/} + ${topicId}" method="post">
+				<input type="text" name="post" placeholder="poszt cím / beküldő">
+				<input type="submit" value="keresés" required="required"> <a
+					th:href="@{/post/} + ${topicId}">Keresés törlés</a>
+			</form>
+			<br>
+			<hr />
+			<br>
+			<div class="form-wrapper">
+				<table>
+					<thead>
+						<tr>
+							<th>poszt cím</th>
+							<th>beküldő</th>
+							<th>ekkor</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:if="${posts.empty}">
+							<td>Nincs megjeleníthető adat</td>
+						</tr>
+						<tr th:each="p : ${posts}">
+							<td><a th:href="@{/comment/} + ${p.id}" th:text="${p.title}"></a></td>
+							<td th:text="${p.userName}"></td>
+							<td th:text="${p.dateTime}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br>
+			<hr />
+			<br>
+			<form th:action="@{/post/new/} + ${postId}" method="post">
+
+				Felhasználó név:<br><input type="text" name="userName"
+					required="required"> <br> Poszt címe:<br><input
+					type="text" name="title" required="required"><br> <input
+					type="submit" value="poszt elküldése" required="required">
+				<br>
+				<textarea rows="4" cols="50" name="post" placeholder="Ez itt a poszt helye..." required></textarea>
+			</form>
+		</main>
 	</div>
-	<br>
-	<hr />
-	<br>
-	<form th:action="@{/post/new/} + ${postId}" method="post">
-
-		Felhasználó név: <input type="text" name="userName" required="required"><br>
-		Poszt címe: <input type="text" name="title" required="required"><br>
-		<input type="submit" value="poszt elküldése" required="required">
-
-		<br>
-		<textarea rows="4" cols="50" name="post" required>Ez itt a poszt helye...</textarea>
-	</form>
 </body>
 </html>
