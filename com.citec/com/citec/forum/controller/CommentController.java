@@ -24,7 +24,8 @@ public class CommentController {
 	@GetMapping("/{postId}")
 	public String listComment(@PathVariable("postId") Integer id, Model model) {
 		model.addAttribute("postEntity", commentService.findAnEntity(id));
-		model.addAttribute("comments", commentService.findAllComment(id));
+		model.addAttribute("comments", commentService.findAllComment(id));		
+		model.addAttribute("postId", id);
 		return "forum/comment";
 	}
 	
@@ -36,12 +37,11 @@ public class CommentController {
 		return "redirect:/comment/{postId}";
 	}
 	
-//	@PostMapping("/find/{postId}")
-//	public String searchInComment(@ModelAttribute Comment c, @PathVariable("postId") Integer id, Model model) {
-//		Integer getUserId = commentService.getUserId(c.getUserName());
-//		c.setId(getUserId);
-//		commentService.newComment(c, id);
-//		return "redirect:/comment/{postId}";
-//	}
-
+	@PostMapping("/{postId}")
+	public String searchInComment(@ModelAttribute Comment c, @PathVariable("postId") Integer id, Model model) {
+		String lookFor = c.getComment();
+		model.addAttribute("postEntity", commentService.findAnEntity(id));
+		model.addAttribute("comments", commentService.lookFor(id, lookFor));
+		return "forum/comment";	
+	}
 }

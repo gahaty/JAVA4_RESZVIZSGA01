@@ -2,22 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
+<title>Komment</title>
 <link rel="stylesheet" type="text/css" href="../static/main.css" />
 </head>
-
-<form th:action="@{/comment/new/__${postEntity.get(0).id}__}"
-		th:object="${postEntity}" method="post">
-	<input type="text" name="name" ><br>
-	<input type="submit" value="keresés komment alapján" required="required">
-
+<a th:href="@{/}">Fő oldal</a>
+<h1 th:each="ps : ${postEntity}" th:text=${ps.title}>Web forum</h1>
+<hr>
+<br>
+<form th:action="@{/comment/} + ${postId}" method="post">
+	<input type="text" name="comment" placeholder="kommentelő / tartalom">
+	<input type="submit" value="keresés" required="required"> <a
+		th:href="@{/comment/} + ${postId}">Keresés törlés</a>
 </form>
+
 <br>
 <hr />
 <br>
 <body>
-	<h1 th:each="ps : ${postEntity}" th:text=${ps.title}>Web forum</h1>
-	<br>
 	<div class="form-wrapper">
 		<table th:each="ps : ${postEntity}">
 			<tbody>
@@ -41,8 +42,7 @@
 	<div class="form-wrapper">
 		<table>
 			<tr th:if="${comments.empty}">
-				<td>Ehhez a poszthoz még nem érkezett hozzászólás! Légy te az
-					első kommentelő!</td>
+				<td>Nincs megjeleníthető adat</td>
 			</tr>
 			<tbody th:each="c : ${comments}">
 				<tr>
@@ -60,7 +60,6 @@
 			</tbody>
 		</table>
 	</div>
-	<br>
 	<hr />
 	<br>
 	<form th:action="@{/comment/new/__${postEntity.get(0).id}__}"

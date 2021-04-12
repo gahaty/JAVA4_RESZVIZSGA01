@@ -2,12 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
+<title>Poszt</title>
 <link rel="stylesheet" type="text/css" href="../static/main.css" />
 </head>
+<a th:href="@{/}">Fő oldal</a>
+<h1 th:each="t : ${topic}" th:text=${t.topicName}>Web forum</h1>
+<hr>
+<br>
+<form th:action="@{/post/} + ${topicId}" method="post">
+	<input type="text" name="post" placeholder="poszt cím / beküldő"> <input type="submit"
+		value="keresés" required="required"> <a
+		th:href="@{/post/} + ${topicId}">Keresés törlés</a>
+</form>
+<br>
+<hr />
+<br>
 <body>
-
-	<h1 th:each="t : ${topic}" th:text=${t.topicName}>Web forum</h1>
 	<div class="form-wrapper">
 		<table>
 			<thead>
@@ -19,8 +29,7 @@
 			</thead>
 			<tbody>
 				<tr th:if="${posts.empty}">
-					<td>Ehhez a témakörhöz még nincs poszt létrehozva! Légy te az
-						első!</td>
+					<td>Nincs megjeleníthető adat</td>
 				</tr>
 				<tr th:each="p : ${posts}">
 					<td><a th:href="@{/comment/} + ${p.id}" th:text="${p.title}"></a></td>
@@ -35,7 +44,7 @@
 	<br>
 	<form th:action="@{/post/new/} + ${postId}" method="post">
 
-		Felhasználónév: <input type="text" name="userName" required="required"><br>
+		Felhasználó név: <input type="text" name="userName" required="required"><br>
 		Poszt címe: <input type="text" name="title" required="required"><br>
 		<input type="submit" value="poszt elküldése" required="required">
 

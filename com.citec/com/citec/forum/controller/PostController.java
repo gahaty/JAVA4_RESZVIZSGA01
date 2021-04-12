@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.citec.forum.entity.Comment;
 import com.citec.forum.entity.Post;
 import com.citec.forum.service.PostService;
 
@@ -34,15 +33,15 @@ public class PostController {
 	public String newPost(@ModelAttribute Post p, @PathVariable("postId") Integer id, Model model) {
 		Integer userId = postService.getUserId(p.getUserName());
 		p.setId(userId);
-		System.out.println("id: " + p.getId());
-		System.out.println("title: " + p.getTitle());
-		System.out.println("userName: " + p.getUserName());
-		System.out.println("dateTime: " + p.getDateTime());
-		System.out.println("post: " + p.getPost());
-		System.out.println("topicId: " + p.getTopicId());
 		postService.newPost(p, id);
 		return "redirect:/post/{postId}";
 	}
 	
-	
+	@PostMapping("/{topicId}")
+	public String searchInPost(@ModelAttribute Post p, @PathVariable("topicId") Integer id, Model model) {
+		String lookFor = p.getPost();
+		model.addAttribute("topic", postService.findById(id));
+		model.addAttribute("posts", postService.lookFor(id, lookFor));
+		return "forum/post";	
+	} 
 }

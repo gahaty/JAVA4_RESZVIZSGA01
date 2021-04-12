@@ -4,11 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.citec.forum.entity.Post;
 import com.citec.forum.entity.Topic;
 import com.citec.forum.service.ForumService;
 
@@ -32,10 +30,14 @@ public class IndexController {
 	public String newTopic(@ModelAttribute Topic t, Model model) {
 	Integer id = forumService.getUserId(t.getUserName());
 	t.setId(id);
-	System.out.println("id: " + id);
-	System.out.println("UserName:" + t.getUserName());
 	forumService.newTopic(t, id);
 	return "redirect:/";
 	}
 	
+	@PostMapping("/")
+	public String searchInPost(@ModelAttribute Topic t, Model model) {
+		String lookFor = t.getName();
+		model.addAttribute("topic", forumService.lookFor(lookFor));
+		return "index";
+	}
 }

@@ -1,21 +1,16 @@
 package com.citec.forum.model;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.citec.forum.entity.Comment;
-import com.citec.forum.entity.Post;
 import com.citec.forum.entity.Topic;
 
 
@@ -69,13 +64,9 @@ public class ForumRepository {
 			String query = "INSERT INTO topic (name, user_name_id) VALUES (?, ?)";
 			template.update(query, t.getName(), id);
 		}
-
-	
-
-	
-
-	
-	
-	
-
+		
+		public List<Topic> lookFor(String lookFor) {
+			String query = "SELECT topic.id, topic.name, user.user_name FROM topic INNER JOIN user ON user_name_id = user.id WHERE topic.name LIKE '%" + lookFor + "%' OR user.user_name LIKE '%" + lookFor + "%'";
+			return template.query(query, new BeanPropertyRowMapper<>(Topic.class));
+		}
 }

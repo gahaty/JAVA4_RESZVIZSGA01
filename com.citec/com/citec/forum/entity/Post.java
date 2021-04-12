@@ -68,7 +68,6 @@ public class Post {
 	public void setTopicId(Integer topicId) {
 		this.topicId = topicId;
 	}
-
 }
 
 

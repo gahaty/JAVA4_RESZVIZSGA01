@@ -47,6 +47,4 @@ public class Topic {
 	public void setTopicName(String topicName) {
 		this.topicName = topicName;
 	}
-	
-	
 }

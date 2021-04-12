@@ -48,4 +48,8 @@ public class CommentService {
 		c.setDateTime(timestamp);
 		commentRepository.newComment(c, id);
 	}
+	
+	public List<Comment> lookFor(Integer id, String lookFor) {
+		return commentRepository.lookFor(id, lookFor);
+	}
 }

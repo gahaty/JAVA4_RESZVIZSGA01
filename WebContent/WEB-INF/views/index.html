@@ -6,7 +6,16 @@
 <link rel="stylesheet" type="text/css" href="./static/main.css" />
 </head>
 <body>
-	<h1>Web forum</h1>
+	<h1>myWeb forum</h1>
+	<hr>
+	<br>
+	<form th:action="@{/}" method="post">
+		<input type="text" name="name" placeholder="témakör / beküldő">
+		<input type="submit" value="keresés" required="required">
+		<a th:href="@{/}">Keresés törlés</a>
+	</form>
+	<br>
+	<hr>
 	<!--a th:href="@{/product/}">Products</a>-->
 	<div class="form-wrapper">
 		<table>
@@ -28,10 +37,10 @@
 	<hr />
 	<br>
 	<form th:action="@{/new}" method="post">
-		Felhasználó név: <input type="text" name="userName" required="required"><br>
-		Témakör címe: <input type="text" name="name" required="required"><br>
-		<input type="submit" value="témakör elküldése" required="required">
-
+		Felhasználó név: <input type="text" name="userName"
+			required="required"><br> Témakör címe: <input
+			type="text" name="name" required="required"><br> <input
+			type="submit" value="témakör elküldése" required="required">
 	</form>
 </body>
 </html>

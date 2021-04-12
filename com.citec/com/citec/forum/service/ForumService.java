@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.citec.forum.entity.Post;
 import com.citec.forum.entity.Topic;
 import com.citec.forum.model.ForumRepository;
 
@@ -35,8 +34,12 @@ public class ForumService {
 	public Integer getUserId(String userName) {
 		return forumRepository.getUserId(userName);
 	}
-	
+
 	public void newTopic(Topic t, Integer id) {
 		forumRepository.newTopic(t, id);
+	}
+
+	public List<Topic> lookFor(String lookFor) {
+		return forumRepository.lookFor(lookFor);
 	}
 }

@@ -1,0 +1,46 @@
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+<link rel="stylesheet" type="text/css" href="../static/main.css" />
+</head>
+<body>
+
+	<h1 th:each="t : ${topic}" th:text=${t.topicName}>Web forum</h1>
+	<div class="form-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>poszt cím</th>
+					<th>beküldő</th>
+					<th>ekkor</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:if="${posts.empty}">
+					<td>Ehhez a témakörhöz még nincs poszt létrehozva! Légy te az
+						első!</td>
+				</tr>
+				<tr th:each="p : ${posts}">
+					<td><a th:href="@{/comment/} + ${p.id}" th:text="${p.title}"></a></td>
+					<td th:text="${p.userName}"></td>
+					<td th:text="${p.dateTime}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<br>
+	<hr />
+	<br>
+	<form th:action="@{/post/new/} + ${postId}" method="post">
+
+		Felhasználónév: <input type="text" name="userName" required="required"><br>
+		Poszt címe: <input type="text" name="title" required="required"><br>
+		<input type="submit" value="poszt elküldése" required="required">
+
+		<br>
+		<textarea rows="4" cols="50" name="post" required>Ez itt a poszt helye...</textarea>
+	</form>
+</body>
+</html>

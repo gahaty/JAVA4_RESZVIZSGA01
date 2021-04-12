@@ -14,7 +14,6 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.citec.forum.entity.Comment;
 import com.citec.forum.entity.Post;
 import com.citec.forum.entity.Topic;
 
@@ -87,5 +86,9 @@ public class PostRepository {
 		}
 		return insertNewUser(userName);
 	}
-
+	
+	public List<Post> lookFor(Integer id, String lookFor) {
+		String query = "SELECT post.id, post.title, user.user_name, post.datetime, topic.name FROM post INNER JOIN user ON user_name_id = user.id INNER JOIN topic ON topic.id = post.topic_id WHERE post.topic_id = ? AND (title LIKE '%" + lookFor +"%' OR user.user_name LIKE '%" + lookFor +"%')";
+		return template.query(query, new BeanPropertyRowMapper<>(Post.class), id);
+	}
 }
